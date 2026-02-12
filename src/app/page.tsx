@@ -1,9 +1,10 @@
-import NavigationLayout from "@/components/layouts/navigationLayout";
-
 export default function Home() {
   return (
-    <NavigationLayout>
-      <div>Home content here</div>
-    </NavigationLayout>
+    <div>
+      <p>Start content here</p>
+      <p>Home content here</p>
+      <p>Home content here</p>
+      <p>Last content here</p>
+    </div>
   );
 }

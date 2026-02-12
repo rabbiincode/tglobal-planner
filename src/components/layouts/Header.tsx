@@ -28,7 +28,7 @@ export const Header = ({ toggleSidebar }: HeaderProps) => {
       bg="#fff"
       align="center"
       justify="space-between"
-      position="fixed"
+      position="sticky"
       top="0"
       right="0"
       left="0"

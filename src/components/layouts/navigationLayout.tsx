@@ -21,8 +21,7 @@ export default function NavigationLayout({
       />
 
       <Box
-        ml={sidebarOpen ? "260px" : "0"}
-        pt="4rem"
+        ml={sidebarOpen ? "280px" : "0"}
         transition="all 0.2s ease"
       >
         {children}
