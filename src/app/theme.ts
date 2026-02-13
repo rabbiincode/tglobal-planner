@@ -22,10 +22,7 @@ const config = defineConfig({
 				brandMainBorder: { value: '#E2E4E9' },
 				brandSurfaceLight: { value: '#F3F5F7' },
 				rosterBorder: { value: '#F3F4F6' },
-				rosterHeader: { value: '#141B34' } // Assuming this is the intended color for the roster border
-				// eventBorderOrage: { value: '#E35F00' },
-				// eventBorderGreen: { value: '#19C34C' },
-				// eventBorderLemon: { value: '#A19712' }
+				rosterHeader: { value: '#141B34' }
 			}
 		}
 	}

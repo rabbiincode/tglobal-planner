@@ -1,20 +1,14 @@
 "use client";
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import {
-  Box,
-  Text,
-  VStack,
-  HStack,
-  Collapsible,
-} from "@chakra-ui/react";
+import { Box, Text, VStack, HStack, Collapsible } from "@chakra-ui/react";
 
 import {
   Category,
   Document,
   Notepad2,
+  Maximize1,
   MenuBoard,
-  AddSquare,
   ArrowDown2,
   Stickynote,
   DocumentText,
@@ -49,8 +43,10 @@ const NavSubItem = ({ icon, label, active, onClick }: any) => (
     pl="1rem"
     cursor="pointer"
     onClick={onClick}
-    borderLeft="0.0625rem solid #D9E5F2"
-    color={active ? "blue.600" : "#4E5D69"}
+    borderLeftWidth={active ? "0.165rem" : "0.0625rem"}
+    borderLeftColor={active ? "#5653FC" : "#d31635ff"}
+    borderLeftStyle="solid"
+    color={active ? "#5653FC" : "#4E5D69"}
     fontWeight={active ? "600" : "500"}
   >
     {icon}
@@ -92,7 +88,7 @@ export const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 
         <Box w="100%">
           <NavItem
-            icon={<AddSquare size="18" />}
+            icon={<Maximize1 size="18" />}
             label="Rooster"
             active={pathname.includes("/rooster")}
             onClick={() => setRoosterOpen(!roosterOpen)}
@@ -100,9 +96,7 @@ export const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
               <ArrowDown2
                 size="16"
                 style={{
-                  transform: roosterOpen
-                    ? "rotate(0deg)"
-                    : "rotate(-90deg)",
+                  transform: roosterOpen ? "rotate(0deg)" : "rotate(-90deg)",
                   transition: "0.2s",
                 }}
               />

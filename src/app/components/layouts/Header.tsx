@@ -62,12 +62,25 @@ export const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
               <Setting2 size="20" />
             </IconButton>
 
-            <IconButton aria-label="notifications" variant="subtle">
+            <IconButton
+              aria-label="notifications"
+              variant="subtle"
+              position="relative"
+            >
               <Notification size="20" />
+              <Box
+                as="span"
+                pos="absolute"
+                right="0.625rem"
+                top="0.5rem"
+                w="2"
+                h="2"
+                bg="red.500"
+                borderRadius="full"
+              />
             </IconButton>
           </HStack>
 
-          {/* ✅ Chakra v3 Menu */}
           <Menu.Root>
             <Menu.Trigger asChild>
               <HStack cursor="pointer" gap="1.5rem">

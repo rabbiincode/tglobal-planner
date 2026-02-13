@@ -1,12 +1,13 @@
 export type TEvent = {
 	id: string;
 	title: string;
-	startTime: string; // Format "HH:mm"
-	endTime: string; // Format "HH:mm"
+	startTime: string;
+	endTime: string;
 	assignee: string;
 	initials: string;
 	type: string;
-	color: string; // Chakra color key (e.g., "orange", "green")
+	date: string;
+	color: string;
 	columnId: string;
 };
 
