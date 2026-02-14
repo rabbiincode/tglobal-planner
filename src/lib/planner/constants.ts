@@ -22,9 +22,14 @@ export const PLANNER_TIME_SLOTS: TTimeSlot[] = [
 ];
 
 const today = new Date().toISOString().split("T")[0];
-const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split("T")[0];
-const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split("T")[0];
-export const PLANNER_EVENTS: TEvent[] = [
+const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000)
+  .toISOString()
+  .split("T")[0];
+const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000)
+  .toISOString()
+  .split("T")[0];
+
+export const defaultEvents: TEvent[] = [
   {
     id: "1",
     title: "Surgery",
@@ -122,6 +127,21 @@ export const PLANNER_EVENTS: TEvent[] = [
     date: tomorrow,
   },
 ];
+
+export function loadPlannerEvents(): TEvent[] {
+  if (typeof window === "undefined") return defaultEvents;
+  try {
+    const stored = localStorage.getItem("plannerEvents");
+    return stored ? JSON.parse(stored) : defaultEvents;
+  } catch {
+    return defaultEvents;
+  }
+}
+
+export function savePlannerEvents(events: TEvent[]) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("plannerEvents", JSON.stringify(events));
+}
 
 export const ROSTER_DATA = [
   {

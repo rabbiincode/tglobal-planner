@@ -4,6 +4,21 @@
 
 Excellent Care Clinic planner is a Next.js + React application that uses Chakra UI for styling and a small custom theme.
 
+Application Features:
+- Calendar view with  data
+- Toggle between dates shows live dates and data in real time
+- Clicking on a schedule shows detailed popup
+- Data persistence with local storage
+- Sidebar toggle
+- Full page navigation
+- Edge Cases Handling
+
+
+1. **UI/UX**
+    - Use icons (iconsax/react-icons) as shown in the design.
+    - Show empty states and loading states where appropriate.
+    - Keep the UI consistent with Chakra/Ark UI best practices.
+
 Key folders:
 
 - `src/app/components/Planner` — main planner UI (CalendarGrid, CalendarCell, EventCard, Roster, etc.)

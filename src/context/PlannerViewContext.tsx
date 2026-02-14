@@ -1,7 +1,7 @@
 "use client";
+import { TEvent } from "@/lib/planner/types";
+import { loadPlannerEvents } from "@/lib/planner/constants";
 import React, { createContext, useContext, useState } from "react";
-import { TEvent } from "@/lib/planner/types"; // make sure the path is correct
-import { PLANNER_EVENTS } from "@/lib/planner/constants";
 
 type TView = "live" | "planner";
 
@@ -25,7 +25,7 @@ export const PlannerViewProvider = ({
 }) => {
   const [view, setView] = useState<TView>("planner");
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
-  const [events, setEvents] = useState<TEvent[]>(PLANNER_EVENTS);
+  const [events, setEvents] = useState<TEvent[]>(loadPlannerEvents());
 
   return (
     <PlannerViewContext.Provider

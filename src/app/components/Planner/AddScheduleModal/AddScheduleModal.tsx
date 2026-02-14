@@ -16,7 +16,7 @@ import {
 import { useState } from "react";
 import { Add, CloseCircle } from "iconsax-reactjs";
 import { TEvent } from "@/lib/planner/types";
-import { PLANNER_ROOMS } from "@/lib/planner/constants";
+import { PLANNER_ROOMS, savePlannerEvents } from "@/lib/planner/constants";
 
 interface Props {
   isOpen: boolean;
@@ -47,7 +47,7 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
 
     const endTime = calculateEndTime(startTime, duration as number);
 
-    const eventDate = new Date(date + "T00:00:00"); // normalize date
+    const eventDate = new Date(date + "T00:00:00");
 
     const newEvent: TEvent = {
       id: crypto.randomUUID(),
@@ -56,15 +56,21 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
       startTime,
       endTime,
       assignee: assignedTo,
-      initials: assignedTo.split(" ").map(n => n[0]).join(""),
+      initials: assignedTo
+        .split(" ")
+        .map((n) => n[0])
+        .join(""),
       type: "task",
       color: "green",
       columnId: location,
     };
 
-    setEvents(prev => [...prev, newEvent]);
+    setEvents((prev) => {
+      const updated = [...prev, newEvent];
+      savePlannerEvents(updated);
+      return updated;
+    });
 
-    // Reset form
     setTitle("");
     setAssignedTo("");
     setLocation("");
@@ -81,14 +87,22 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
     const remMins = mins % 60;
     durationOptions.push({
       value: mins / 60,
-      label: hrs > 0 ? (remMins > 0 ? `${hrs}h ${remMins}m` : `${hrs}h`) : `${remMins}m`,
+      label:
+        hrs > 0
+          ? remMins > 0
+            ? `${hrs}h ${remMins}m`
+            : `${hrs}h`
+          : `${remMins}m`,
     });
   }
 
-  const previewEndTime = duration ? calculateEndTime(startTime, duration as number) : "";
+  const previewEndTime = duration
+    ? calculateEndTime(startTime, duration as number)
+    : "";
 
   const isFormValid = () => {
-    if (!title || !assignedTo || !location || !date || !startTime || !duration) return false;
+    if (!title || !assignedTo || !location || !date || !startTime || !duration)
+      return false;
     const [hours, minutes] = startTime.split(":").map(Number);
     if (hours > 23 || minutes > 59) return false;
     return true;
@@ -107,13 +121,22 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
           <Dialog.Body>
             <VStack gap={5} align="stretch">
               <Field.Root>
-                <Field.Label>Title / Task</Field.Label>
-                <Input value={title} placeholder="Enter title" onChange={(e) => setTitle(e.target.value)} />
+                <Field.Label>Title</Field.Label>
+                <Input
+                  value={title}
+                  placeholder="Enter title"
+                  onChange={(e) => setTitle(e.target.value)}
+                  style={{ width: "100%", padding: "0.5rem", borderRadius: "0.375rem", border: "1px solid #CBD5E0" }}
+                />
               </Field.Root>
 
-              <Field.Root>
+              <Field.Root w="100%">
                 <Field.Label>Assign to</Field.Label>
-                <select value={assignedTo} onChange={(e) => setAssignedTo(e.target.value)}>
+                <select
+                  value={assignedTo}
+                  onChange={(e) => setAssignedTo(e.target.value)}
+                  style={{ width: "100%", padding: "0.5rem", borderRadius: "0.375rem", border: "1px solid #CBD5E0" }}
+                >
                   <option value="">Select assignee</option>
                   <option>Haico de Gast</option>
                   <option>John Doe</option>
@@ -123,28 +146,47 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
 
               <Field.Root>
                 <Field.Label>Column / Location</Field.Label>
-                <select value={location} onChange={(e) => setLocation(e.target.value)}>
+                <select
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  style={{ width: "100%", padding: "0.5rem", borderRadius: "0.375rem", border: "1px solid #CBD5E0" }}
+                >
                   <option value="">Select location</option>
-                  {PLANNER_ROOMS.map(room => (
-                    <option key={room.id} value={room.id}>{room.name}</option>
+                  {PLANNER_ROOMS.map((room) => (
+                    <option key={room.id} value={room.id}>
+                      {room.name}
+                    </option>
                   ))}
                 </select>
               </Field.Root>
 
               <Field.Root>
                 <Field.Label>Date</Field.Label>
-                <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                <Input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
               </Field.Root>
 
               <HStack gap={4}>
                 <Field.Root>
                   <Field.Label>Start time</Field.Label>
-                  <Input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+                  <Input
+                    type="time"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    style={{ width: "100%", padding: "0.5rem", borderRadius: "0.375rem", border: "1px solid #CBD5E0" }}
+                  />
                 </Field.Root>
 
                 <Field.Root>
                   <Field.Label>Duration</Field.Label>
-                  <select value={duration} onChange={(e) => setDuration(Number(e.target.value))}>
+                  <select
+                    value={duration}
+                    onChange={(e) => setDuration(Number(e.target.value))}
+                    style={{ width: "100%", padding: "0.5rem", borderRadius: "0.375rem", border: "1px solid #CBD5E0" }}
+                  >
                     <option value="">Select duration</option>
                     {durationOptions.map((opt) => (
                       <option key={opt.value} value={opt.value}>
@@ -157,16 +199,30 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
 
               <Separator />
 
-              <Box p={4} bg="gray.50" borderRadius="lg" border="1px solid" borderColor="gray.200">
+              <Box
+                p={4}
+                bg="gray.50"
+                borderRadius="lg"
+                border="1px solid"
+                borderColor="gray.200"
+              >
                 <Text fontSize="sm" color="gray.500" mb={2}>
                   Preview
                 </Text>
                 <Flex align="center">
-                  <Box w="4px" h="60px" bg="green.400" borderRadius="full" mr={3} />
+                  <Box
+                    w="4px"
+                    h="60px"
+                    bg="green.400"
+                    borderRadius="full"
+                    mr={3}
+                  />
                   <Box>
                     <Text fontWeight="bold">{title || "Task Title"}</Text>
                     <Text fontSize="sm" color="gray.600">
-                      {date || "YYYY-MM-DD"} · {startTime || "HH:MM"} {previewEndTime ? `- ${previewEndTime}` : ""} · {assignedTo || "Assignee"} · {location || "Location"}
+                      {date || "YYYY-MM-DD"} · {startTime || "HH:MM"}{" "}
+                      {previewEndTime ? `- ${previewEndTime}` : ""} ·{" "}
+                      {assignedTo || "Assignee"} · {location || "Location"}
                     </Text>
                   </Box>
                 </Flex>
@@ -183,7 +239,11 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
                 </HStack>
               </Button>
 
-              <Button bg="purple.500" onClick={handleCreate} disabled={!isFormValid()}>
+              <Button
+                bg="#5653FC"
+                onClick={handleCreate}
+                disabled={!isFormValid()}
+              >
                 <HStack gap="2">
                   <Add size="18" />
                   <Text>Create Roster</Text>
