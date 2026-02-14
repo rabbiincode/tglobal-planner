@@ -109,8 +109,8 @@ export const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                 <NavSubItem
                   label="Mijn Rooster"
                   icon={<DocumentText size="18" />}
-                  active={pathname === "/rooster"}
-                  onClick={() => navigate("/rooster")}
+                  active={pathname === "/pages//rooster"}
+                  onClick={() => navigate("/pages//rooster")}
                 />
                 <NavSubItem
                   label="Planner"
@@ -121,8 +121,8 @@ export const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                 <NavSubItem
                   label="Instellingen"
                   icon={<Stickynote size="18" />}
-                  active={pathname === "/rooster/settings"}
-                  onClick={() => navigate("/rooster/settings")}
+                  active={pathname === "/pages/rooster/settings"}
+                  onClick={() => navigate("/pages/rooster/settings")}
                 />
               </VStack>
             </Collapsible.Content>
@@ -132,36 +132,36 @@ export const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
         <NavItem
           icon={<Stickynote size="18" />}
           label="My to do Protocols"
-          active={pathname === "/protocols"}
-          onClick={() => navigate("/protocols")}
+          active={pathname === "/pages/protocols"}
+          onClick={() => navigate("/pages/protocols")}
         />
 
         <NavItem
           icon={<Document size="18" />}
           label="Document Management"
-          active={pathname === "/documents"}
-          onClick={() => navigate("/documents")}
+          active={pathname === "/pages/documents"}
+          onClick={() => navigate("/pages/documents")}
         />
 
         <NavItem
           icon={<Notepad2 size="18" />}
           label="Department News"
-          active={pathname === "/news"}
-          onClick={() => navigate("/news")}
+          active={pathname === "/pages/news"}
+          onClick={() => navigate("/pages/news")}
         />
 
         <NavItem
           icon={<MenuBoard size="18" />}
           label="Knowledge Base"
-          active={pathname === "/knowledge"}
-          onClick={() => navigate("/knowledge")}
+          active={pathname === "/pages/knowledge"}
+          onClick={() => navigate("/pages/knowledge")}
         />
 
         <NavItem
           icon={<DocumentText size="18" />}
           label="General News"
-          active={pathname === "/general-news"}
-          onClick={() => navigate("/general-news")}
+          active={pathname === "/pages/general-news"}
+          onClick={() => navigate("/pages/general-news")}
         />
       </VStack>
     </Box>
