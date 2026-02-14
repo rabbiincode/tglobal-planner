@@ -206,7 +206,7 @@ export const CalendarGrid = () => {
                   px={4}
                 >
                   <Calendar size="25" />
-                  No events scheduled for this day
+                  No event scheduled for this day
                   <MenuBoard size="25" />
                 </Flex>
               )}
