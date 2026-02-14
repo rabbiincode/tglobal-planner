@@ -16,11 +16,11 @@ import {
   LuFilter,
 } from "react-icons/lu";
 import { Add, People } from "iconsax-reactjs";
-import { useState } from "react";
+import { usePlannerView } from "@/context/PlannerViewContext";
 
 export const DateNavigation = () => {
   const today = new Date();
-  const [currentDate, setCurrentDate] = useState(today);
+  const { currentDate, setCurrentDate } = usePlannerView();
 
   const formatDay = (date: Date) =>
     date.toLocaleDateString("en-US", { weekday: "short" });

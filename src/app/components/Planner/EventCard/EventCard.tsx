@@ -12,7 +12,7 @@ export interface EventCardProps {
   color: string;
   events?: TEvent[];
   date?: string;
-  seeAllPlacement?: "right";
+  seeAllPlacement?: "left" | "right";
 }
 
 export const EventCard = ({

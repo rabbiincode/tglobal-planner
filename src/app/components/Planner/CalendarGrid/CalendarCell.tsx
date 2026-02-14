@@ -1,6 +1,6 @@
+import { CalendarCellProps } from "@/lib/utils";
 import {
   Box,
-  BoxProps,
   Button,
   HStack,
   PopoverRoot as Popover,
@@ -12,20 +12,6 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
-
-interface CalendarCellProps {
-  children?: ReactNode;
-  showSeeAll?: boolean;
-  events?: any[];
-  bg?: string;
-  borderColor?: string;
-  borderLeft?: boolean;
-  borderRight?: boolean;
-  borderTop?: boolean;
-  borderBottom?: boolean;
-  style?: BoxProps;
-}
 
 export const CalendarCell = ({
   children,

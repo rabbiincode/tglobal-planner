@@ -1,4 +1,5 @@
 "use client";
+
 import { usePlannerView } from "@/context/PlannerViewContext";
 import {
   Box,
@@ -19,9 +20,10 @@ import { CalendarGrid } from "./CalendarGrid";
 import { DateNavigation } from "./DateNavigation";
 import { Roster } from "./Roster";
 import { SubHeader } from "./SubHeader";
-import AddSchedule from "./AddSchedule/AddSchedule";
+import AddScheduleModal from "./AddScheduleModal/AddScheduleModal";
 
 export const Planner = () => {
+  const { view } = usePlannerView();
   const [isLoading, setIsLoading] = useState(true);
   const { open, onOpen, onClose } = useDisclosure();
 
@@ -41,10 +43,9 @@ export const Planner = () => {
     );
   }
 
-  const { view } = usePlannerView();
-
   return (
     <Stack gap={5} w="full" h="full" overflow="hidden">
+      {/* Header */}
       <Flex
         justify="space-between"
         align="center"
@@ -85,8 +86,11 @@ export const Planner = () => {
           </Button>
         </Flex>
       </Flex>
-      <AddSchedule isOpen={open} onClose={onClose} />
 
+      {/* Add Schedule Modal */}
+      <AddScheduleModal isOpen={open} onClose={onClose} />
+
+      {/* Main Content */}
       <VStack
         gap={5}
         pl="1.875rem"
@@ -100,6 +104,7 @@ export const Planner = () => {
 
         <HStack gap={5} w="full" align="start">
           {view === "live" ? <Roster /> : null}
+
           <ScrollArea.Root height="calc(100vh - 100px)" mt={5}>
             <ScrollArea.Viewport>
               <ScrollArea.Content textStyle="sm">
@@ -107,12 +112,7 @@ export const Planner = () => {
                   <VStack gap={5} w="full">
                     <DateNavigation />
 
-                    <Box
-                      flex={1}
-                      borderBottomRightRadius="0"
-                      borderBottomLeftRadius="0"
-                      w="full"
-                    >
+                    <Box flex={1} borderBottomRightRadius="0" borderBottomLeftRadius="0" w="full">
                       <CalendarGrid />
                     </Box>
                   </VStack>

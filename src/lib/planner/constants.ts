@@ -22,63 +22,68 @@ export const PLANNER_TIME_SLOTS: TTimeSlot[] = [
 ];
 
 export const PLANNER_EVENTS: TEvent[] = [
-  {
-    id: "1",
-    title: "Surgery",
-    startTime: "11:00",
-    endTime: "12:30",
-    assignee: "Haico de Gast",
-    initials: "HG",
-    type: "surgery",
-    color: "orange",
-    columnId: "room1",
-  },
-  {
-    id: "2",
-    title: "Pijnspecialist",
-    startTime: "11:00",
-    endTime: "13:30",
-    assignee: "Diane Lane",
-    initials: "DL",
-    type: "consultation",
-    color: "green",
-
-    columnId: "room1",
-  },
-  {
-    id: "3",
-    title: "Pijnspecialist",
-    startTime: "11:30",
-    endTime: "13:30",
-    assignee: "Diane Lane",
-    initials: "DL",
-    type: "consultation",
-    color: "yellow",
-    columnId: "misc",
-  },
-  {
-    id: "4",
-    title: "Pijnspecialist",
-    startTime: "11:30",
-    endTime: "13:30",
-    assignee: "Diane Lane",
-    initials: "HG",
-    type: "consultation",
-    color: "green",
-    columnId: "finance",
-  },
-  {
-    id: "5",
-    title: "Pijnspecialist",
-    startTime: "16:00",
-    endTime: "00:00",
-    assignee: "Diane Lane",
-    initials: "HG",
-    type: "consultation",
-    color: "green",
-    columnId: "finance",
-  },
+	{
+		id: '1',
+		title: 'Surgery',
+		startTime: '11:00',
+		endTime: '12:30',
+		assignee: 'Haico de Gast',
+		initials: 'HG',
+		type: 'surgery',
+		color: 'orange',
+		columnId: 'room1',
+		date: '2026-02-13'
+	},
+	{
+		id: '2',
+		title: 'Pijnspecialist',
+		startTime: '11:00',
+		endTime: '13:30',
+		assignee: 'Diane Lane',
+		initials: 'DL',
+		type: 'consultation',
+		color: 'green',
+		columnId: 'room1',
+		date: '2026-02-13'
+	},
+	{
+		id: '3',
+		title: 'Pijnspecialist',
+		startTime: '11:30',
+		endTime: '13:30',
+		assignee: 'Diane Lane',
+		initials: 'DL',
+		type: 'consultation',
+		color: 'yellow',
+		columnId: 'misc',
+		date: '2026-02-13'
+	},
+	{
+		id: '4',
+		title: 'Pijnspecialist',
+		startTime: '11:30',
+		endTime: '13:30',
+		assignee: 'Diane Lane',
+		initials: 'HG',
+		type: 'consultation',
+		color: 'green',
+		columnId: 'finance',
+		date: '2026-02-13'
+	},
+	{
+		id: '5',
+		title: 'Pijnspecialist',
+		startTime: '16:00',
+		endTime: '00:00',
+		assignee: 'Diane Lane',
+		initials: 'HG',
+		type: 'consultation',
+		color: 'green',
+		columnId: 'finance',
+		date: '2026-02-13'
+	}
 ];
+
 
 export const ROSTER_DATA = [
   {
