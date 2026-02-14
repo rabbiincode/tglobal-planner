@@ -21,69 +21,107 @@ export const PLANNER_TIME_SLOTS: TTimeSlot[] = [
   { time: "16:00" },
 ];
 
+const today = new Date().toISOString().split("T")[0];
+const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 export const PLANNER_EVENTS: TEvent[] = [
-	{
-		id: '1',
-		title: 'Surgery',
-		startTime: '11:00',
-		endTime: '12:30',
-		assignee: 'Haico de Gast',
-		initials: 'HG',
-		type: 'surgery',
-		color: 'orange',
-		columnId: 'room1',
-		date: '2026-02-13'
-	},
-	{
-		id: '2',
-		title: 'Pijnspecialist',
-		startTime: '11:00',
-		endTime: '13:30',
-		assignee: 'Diane Lane',
-		initials: 'DL',
-		type: 'consultation',
-		color: 'green',
-		columnId: 'room1',
-		date: '2026-02-13'
-	},
-	{
-		id: '3',
-		title: 'Pijnspecialist',
-		startTime: '11:30',
-		endTime: '13:30',
-		assignee: 'Diane Lane',
-		initials: 'DL',
-		type: 'consultation',
-		color: 'yellow',
-		columnId: 'misc',
-		date: '2026-02-13'
-	},
-	{
-		id: '4',
-		title: 'Pijnspecialist',
-		startTime: '11:30',
-		endTime: '13:30',
-		assignee: 'Diane Lane',
-		initials: 'HG',
-		type: 'consultation',
-		color: 'green',
-		columnId: 'finance',
-		date: '2026-02-13'
-	},
-	{
-		id: '5',
-		title: 'Pijnspecialist',
-		startTime: '16:00',
-		endTime: '00:00',
-		assignee: 'Diane Lane',
-		initials: 'HG',
-		type: 'consultation',
-		color: 'green',
-		columnId: 'finance',
-		date: '2026-02-13'
-	}
+  {
+    id: "1",
+    title: "Surgery",
+    startTime: "11:00",
+    endTime: "12:30",
+    assignee: "Haico de Gast",
+    initials: "HG",
+    type: "surgery",
+    color: "orange",
+    columnId: "room1",
+    date: today,
+  },
+  {
+    id: "2",
+    title: "Out Patient Consultation",
+    startTime: "12:00",
+    endTime: "2:30",
+    assignee: "Haico de Gast",
+    initials: "HG",
+    type: "consultation",
+    color: "orange",
+    columnId: "room1",
+    date: yesterday,
+  },
+  {
+    id: "3",
+    title: "Pijnspecialist",
+    startTime: "11:00",
+    endTime: "13:30",
+    assignee: "Diane Lane",
+    initials: "DL",
+    type: "consultation",
+    color: "green",
+    columnId: "room1",
+    date: today,
+  },
+  {
+    id: "4",
+    title: "Pijnspecialist",
+    startTime: "11:30",
+    endTime: "13:30",
+    assignee: "Diane Lane",
+    initials: "DL",
+    type: "consultation",
+    color: "yellow",
+    columnId: "misc",
+    date: today,
+  },
+  {
+    id: "5",
+    title: "Pijnspecialist",
+    startTime: "11:30",
+    endTime: "13:30",
+    assignee: "Diane Lane",
+    initials: "HG",
+    type: "consultation",
+    color: "green",
+    columnId: "finance",
+    date: today,
+  },
+  {
+    id: "6",
+    title: "Pijnspecialist",
+    startTime: "16:00",
+    endTime: "00:00",
+    assignee: "Diane Lane",
+    initials: "HG",
+    type: "consultation",
+    color: "green",
+    columnId: "finance",
+    date: today,
+  },
+  {
+    id: "7",
+    title: "Scanning",
+    startTime: "1:00",
+    endTime: "04:00",
+    assignee: "Diane Lane",
+    initials: "HG",
+    type: "surgery",
+    color: "green",
+    columnId: "behandelingkamer1",
+    date: tomorrow,
+  },
+  {
+    id: "6",
+    title: "Patient Counseling",
+    startTime: "10:00",
+    endTime: "12:00",
+    assignee: "Diane Lane",
+    initials: "HG",
+    type: "consultation",
+    color: "green",
+    columnId: "management",
+    date: tomorrow,
+  },
 ];
-
 
 export const ROSTER_DATA = [
   {
@@ -151,4 +189,3 @@ export const ROSTER_DATA = [
     ],
   },
 ];
-
