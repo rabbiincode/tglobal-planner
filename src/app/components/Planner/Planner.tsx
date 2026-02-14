@@ -45,7 +45,6 @@ export const Planner = () => {
 
   return (
     <Stack gap={5} w="full" h="full" overflow="hidden">
-      {/* Header */}
       <Flex
         justify="space-between"
         align="center"
@@ -87,10 +86,8 @@ export const Planner = () => {
         </Flex>
       </Flex>
 
-      {/* Add Schedule Modal */}
       <AddScheduleModal isOpen={open} onClose={onClose} />
 
-      {/* Main Content */}
       <VStack
         gap={5}
         pl="1.875rem"

@@ -114,7 +114,7 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
       <Dialog.Positioner>
         <Dialog.Content borderRadius="xl">
           <Dialog.Header>
-            <Dialog.Title>Create New Roster</Dialog.Title>
+            <Dialog.Title>New Schedule?</Dialog.Title>
             <Dialog.CloseTrigger />
           </Dialog.Header>
 
@@ -206,7 +206,7 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
                 border="1px solid"
                 borderColor="gray.200"
               >
-                <Text fontSize="sm" color="gray.500" mb={2}>
+                <Text fontSize="sm" fontWeight="bold" color="gray.500" mb={2}>
                   Preview
                 </Text>
                 <Flex align="center">
@@ -218,7 +218,7 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
                     mr={3}
                   />
                   <Box>
-                    <Text fontWeight="bold">{title || "Task Title"}</Text>
+                    <Text fontWeight="bold">{title || "Schedule Title"}</Text>
                     <Text fontSize="sm" color="gray.600">
                       {date || "YYYY-MM-DD"} · {startTime || "HH:MM"}{" "}
                       {previewEndTime ? `- ${previewEndTime}` : ""} ·{" "}
@@ -246,7 +246,7 @@ export default function AddScheduleModal({ isOpen, onClose }: Props) {
               >
                 <HStack gap="2">
                   <Add size="18" />
-                  <Text>Create Roster</Text>
+                  <Text>Create Schedule</Text>
                 </HStack>
               </Button>
             </HStack>

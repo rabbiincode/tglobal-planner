@@ -66,7 +66,6 @@ export const CalendarGrid = () => {
       <ScrollArea.Root height="calc(100dvh - 19.3125rem)">
         <ScrollArea.Viewport>
           <ScrollArea.Content display="flex" flexDirection="row">
-            {/* Time Column */}
             <VStack border="none" gap={0} justifyContent="start">
               <Box position="sticky" top={0} zIndex={20} h={11} w="full">
                 <ColumnHeader color="brandSecondary" label="Days" bg="brandSecondaryLight" />
@@ -80,7 +79,6 @@ export const CalendarGrid = () => {
               </Grid>
             </VStack>
 
-            {/* Rooms and Events */}
             <Grid
               templateColumns={`repeat(${COLUMNS}, ${240 / PLANNER_ROOMS.length}px)`}
               templateRows={`44px repeat(${PLANNER_TIME_SLOTS.length}, ${ROW_HEIGHT}px)`}
@@ -89,14 +87,12 @@ export const CalendarGrid = () => {
               flex={1}
               position="relative"
             >
-              {/* Column Headers */}
               {PLANNER_ROOMS.map(room => (
                 <Box key={room.id} position="sticky" top={0} zIndex={20} gridColumn="span 4">
                   <ColumnHeader label={room.name} />
                 </Box>
               ))}
 
-              {/* Calendar cells */}
               {Array.from({ length: COLUMNS * PLANNER_TIME_SLOTS.length }).map((_, index) => {
                 const colIndex = index % COLUMNS;
                 const timeSlotIndex = Math.floor(index / COLUMNS);
@@ -115,7 +111,6 @@ export const CalendarGrid = () => {
                 );
               })}
 
-              {/* Event Cards */}
               {filteredEvents.map(event => {
                 const roomIndex = PLANNER_ROOMS.findIndex(r => r.id === event.columnId);
                 if (roomIndex === -1) return null;
